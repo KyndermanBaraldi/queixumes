@@ -6,6 +6,7 @@ interface Question {
   options: string[];
   answer: string;
   resolution: string;
+  author: string
 }
 
 const Home: React.FC = () => {
@@ -73,12 +74,12 @@ const Home: React.FC = () => {
     }
   };
 
-  const handleRestartQuiz = () => {
-    setCurrentQuestion(0);
-    setSelectedOptions(new Array(questions.length).fill(-1));
-    setFinished(false);
-    setScore(0);
-  };
+  // const handleRestartQuiz = () => {
+  //   setCurrentQuestion(0);
+  //   setSelectedOptions(new Array(questions.length).fill(-1));
+  //   setFinished(false);
+  //   setScore(0);
+  // };
 
   if (loading) {
     return <div>Carregando...</div>;
@@ -95,6 +96,7 @@ const Home: React.FC = () => {
       </div>
       <div className="quiz-body">
         <h3>{`${currentQuestion + 1} - ${questions[currentQuestion].question}`}</h3>
+        <p>Autor: {questions[currentQuestion].author}</p>
         <div className="options">
           {questions[currentQuestion].options.map((option, index) => (
             <button

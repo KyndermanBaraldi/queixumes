@@ -25,6 +25,13 @@ const Home: React.FC = () => {
       <Dimensao titulo="DIMENSÃO HUMANA" questoes={dimensaoHumana} />
       <Dimensao titulo="DIMENSÃO INSTITUCIONAL" questoes={dimensaoInstitucional} />
       <Dimensao titulo="DIMENSÃO TÉCNICA" questoes={dimensaoTecnica} />
+
+      <p style={{ marginTop: "20px", textAlign: "center", fontStyle: "italic", fontSize: "14px" }}>
+        Os formulário em que se criam as questões e os das disciplinas foram criados por Marcus Vinicius.
+        <a href="https://docs.google.com/spreadsheets/d/1oUgu4BTZXq9DPtTtWVUtkWRb_dtDlIKAZzXuRlcqzWs/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+          Link para Planilha
+        </a>
+      </p>
       
     </div>
   );
