@@ -18,8 +18,8 @@ const Menu: React.FC = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link href="/lista-exercicios" className="nav-link">
-            Listas
+          <Link href="/disciplinas" className="nav-link">
+            Disciplinas
           </Link>
         </li>
       </ul>

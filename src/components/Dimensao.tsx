@@ -1,4 +1,6 @@
 // components/Dimensao.tsx
+import { generateSlug } from "@/utils/slug";
+import Link from "next/link";
 import React from "react";
 
 interface Questao {
@@ -28,7 +30,12 @@ const Dimensao: React.FC<DimensaoProps> = ({ titulo, questoes }) => {
           {questoes.map((questao, index) => (
             <tr key={index}>
               <td>{questao.caiNaProva}</td>
-              <td>{questao.disciplina}</td>
+              <td>
+                
+                <Link href={`/disciplinas/${generateSlug(questao.disciplina)}`}>
+                  {questao.disciplina}
+                </Link>
+              </td>
               <td><a href={questao.link} target="_blank" rel="noopener noreferrer">{questao.link}</a></td>
             </tr>
           ))}
