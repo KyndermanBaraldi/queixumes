@@ -96,9 +96,7 @@ const Home: React.FC = () => {
         <h2>Simulado Curso Formação 1ª Turma</h2>
       </div>
       <div className="quiz-body">
-        <h3>{`${currentQuestion + 1} - ${questions[currentQuestion].question}`}</h3>
-        <p>Disciplina: {questions[currentQuestion].course}</p>
-        <p>Autor: {questions[currentQuestion].author}</p>
+        <pre className="caput">{`${currentQuestion + 1} - ${questions[currentQuestion].question}`}</pre>
         <div className="options">
           {questions[currentQuestion].options.map((option, index) => (
             <button
@@ -116,6 +114,9 @@ const Home: React.FC = () => {
           ))}
           
         </div>
+        
+        <p>Disciplina: {questions[currentQuestion].course}</p>
+        <p>Autor: {questions[currentQuestion].author}</p>
 
         {finished && (
           <div>

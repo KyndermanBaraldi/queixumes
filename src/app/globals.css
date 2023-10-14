@@ -12,6 +12,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  font-family: Arial, sans-serif;
 }
 
 li {
@@ -86,6 +87,15 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.caput {
+  font-family: Arial, sans-serif;
+  align-text: justify;
+  font-size: 1rem;
+  color: #0f172a;
+  word-break: normal;
+  white-space: pre-wrap;
 }
 
 .quiz-header {
