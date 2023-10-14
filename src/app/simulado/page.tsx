@@ -6,7 +6,8 @@ interface Question {
   options: string[];
   answer: string;
   resolution: string;
-  author: string
+  author: string;
+  course: string;
 }
 
 const Home: React.FC = () => {
@@ -96,6 +97,7 @@ const Home: React.FC = () => {
       </div>
       <div className="quiz-body">
         <h3>{`${currentQuestion + 1} - ${questions[currentQuestion].question}`}</h3>
+        <p>Disciplina: {questions[currentQuestion].course}</p>
         <p>Autor: {questions[currentQuestion].author}</p>
         <div className="options">
           {questions[currentQuestion].options.map((option, index) => (

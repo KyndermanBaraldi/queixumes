@@ -22,6 +22,7 @@ const dimensaoHumana = [
   
   // Dimensão Técnica
   const dimensaoTecnica = [
+    { disciplina: "Tributação e Contencioso", link: "https://forms.gle/UqXL1u9weLEypYDV8", caiNaProva: "SIM" },
     { disciplina: "Administração Aduaneira e Modelo de Controle - MCA", link: "https://forms.gle/Q8TKrqBG8RQfX3nC6", caiNaProva: "" },
     { disciplina: "Conformidade Tributária", link: "https://forms.gle/jSCKoPjKX5wEe96f9", caiNaProva: "" },
     { disciplina: "Controle de Carga, Fluxo de Informações e Gestão Coordenada de Fronteiras - CCA", link: "https://forms.gle/ibRGAMsHszzf9ejT7", caiNaProva: "" },
@@ -37,7 +38,6 @@ const dimensaoHumana = [
     { disciplina: "Sistema Público de Escriturações Digitais (SPED)", link: "https://forms.gle/gNVdPwueLVFTQwER9", caiNaProva: "" },
     { disciplina: "Tecnologia da Informação e Fluência em Dados I", link: "https://forms.gle/7jUtWLC7hxZXWBH9A", caiNaProva: "" },
     { disciplina: "Tecnologia da Informação e Fluência em Dados II", link: "https://forms.gle/q4EpRpH9yJq42LJh7", caiNaProva: "" },
-    { disciplina: "Tributação e Contencioso", link: "https://forms.gle/UqXL1u9weLEypYDV8", caiNaProva: "" },
     { disciplina: "Vigilância e Repressão Aduaneira - VRA", link: "https://forms.gle/4hckip62syiMCF7E9", caiNaProva: "" },
   ];
 
