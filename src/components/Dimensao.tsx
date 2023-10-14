@@ -29,7 +29,7 @@ const Dimensao: React.FC<DimensaoProps> = ({ titulo, questoes }) => {
         <tbody>
           {questoes.map((questao, index) => (
             <tr key={index}>
-              <td>{questao.caiNaProva}</td>
+              <td>{questao.caiNaProva==="SIM" && questao.caiNaProva}</td>
               <td>
                 
                 <Link href={`/disciplinas/${generateSlug(questao.disciplina)}`}>

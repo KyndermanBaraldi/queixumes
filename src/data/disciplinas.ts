@@ -11,7 +11,7 @@ const dimensaoHumana = [
     { disciplina: "Receita Federal: Governança, Planejamento, Desempenho e Estrutura Organizacional", link: "https://forms.gle/w2bph1aJDDoZQ4pn6", caiNaProva: "Não" },
     { disciplina: "Cidadania Fiscal e Interação com o Contribuinte", link: "https://forms.gle/t98sAx7oQ1H2Ee2i6", caiNaProva: "Não" },
     { disciplina: "Comunicação Institucional", link: "https://forms.gle/Yfmx5n16jQTvYvsLA", caiNaProva: "Não" },
-    { disciplina: "Estado, Sociedade e Transformação Digital", link: "https://forms.gle/QGChKbi1DvtCG4ek8", caiNaProva: "Sim" },
+    { disciplina: "Estado, Sociedade e Transformação Digital", link: "https://forms.gle/QGChKbi1DvtCG4ek8", caiNaProva: "SIM" },
     { disciplina: "Gestão de Logística", link: "https://forms.gle/1GiztDwZfbJGo9sMA", caiNaProva: "Não" },
     { disciplina: "Gestão de Pessoas na RFB", link: "https://forms.gle/S6vdE4VtWxK61o8v5", caiNaProva: "Não" },
     { disciplina: "Gestão de Riscos", link: "https://forms.gle/6W1ZxUKtt4oByQve9", caiNaProva: "Não" },
