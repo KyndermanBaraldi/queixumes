@@ -33,7 +33,7 @@ const Menu: React.FC = () => {
         <li className="dropdown">
           <a className="nav-link" href="#">Lotações</a>  
           <div className="dropdown-menu">
-            <a className="nav-link" href="https://onedrive.live.com/edit.aspx?resid=C07A5B1D8B9FFEFB!s16f9e5b4bf0c46859d75c48adb01de60&cid=c07a5b1d8b9ffefb&ithint=file%2Cxlsx&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy9jMDdhNWIxZDhiOWZmZWZiL0ViVGwtUllNdjRWR25YWEVpdHNCM21BQnFFeVFub20wZ2hLOUgwY250a0tZdHc_ZT03VW0wd0Q&migratedtospo=true" target="_blank" rel="noopener noreferrer">Simulação de lotação</a>
+            <a className="nav-link" href="https://docs.google.com/spreadsheets/d/1qqXL5GZ3BpJpmXLFURQuJghCzqnmlaKQ26oeTul-ztY/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Simulação de lotação</a>
             <a className="nav-link" href="https://docs.google.com/spreadsheets/d/1cukFEe__xKsY0tvxFLEkyLAaGVNUsi33G6PZl0y8LDU/edit#gid=0" target="_blank" rel="noopener noreferrer">Resultado Remoção</a>
             <a className="nav-link" href="https://lookerstudio.google.com/reporting/0414d52a-d654-4339-ac7d-ac832b9021a1/page/vtEfD" target="_blank" rel="noopener noreferrer">Mapa das vagas</a>
           </div>

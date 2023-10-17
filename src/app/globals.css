@@ -15,6 +15,10 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.fc .fc-col-header-cell-cushion {
+  color: #020617;
+}
+
 li {
   list-style: none;
 }
@@ -234,4 +238,73 @@ th {
   padding: 15px;
   margin-right: 2rem;
   border-radius: 10px;
+}
+
+.page-ul {
+  padding-bottom: 2rem;
+}
+
+.page-ul li {
+  list-style: circle;
+}
+
+.page-label {
+  display: block;
+}
+
+.calculadora {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 3rem;
+  min-height: 750px;
+}
+
+.resultado,
+.dados {
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 500px;
+}
+
+.dados input[type="date"] {
+  height: 2rem;
+}
+
+.dados select {
+  height: 2rem;
+  width: 20rem;
+  border-radius: 3px;
+}
+
+.dados button {
+  background-color: #00f5d4;
+  color: #0f172a;
+  font-weight: bold;
+  padding: 15px;
+  margin-right: 2rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.dados button:hover {
+  background-color: #00f5f5;
+}
+
+.page-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+}
+
+.tabela-prazos {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 2rem;
 }
