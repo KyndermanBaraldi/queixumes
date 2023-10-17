@@ -9,7 +9,9 @@ export function workday(data: Date) {
       '05-01', // Dia do Trabalho
       '09-07', // Independência do Brasil
       '10-12', // Dia de Nossa Senhora Aparecida
+      '10-13', // PONTO FACULTATIVO
       '11-02', // Dia de Finados
+      '11-03', // PONTO FALCULTATIVO
       '11-15', // Proclamação da República
       '12-25', // Natal
       // Adicione mais feriados conforme necessário
