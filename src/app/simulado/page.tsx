@@ -116,7 +116,7 @@ const Home: React.FC = () => {
         </div>
         
         <p>Disciplina: {questions[currentQuestion].course}</p>
-        <p>Autor: {questions[currentQuestion].author}</p>
+        <p>Autor: Auditor(a) Fiscal {questions[currentQuestion].author}</p>
 
         {finished && (
           <div>
