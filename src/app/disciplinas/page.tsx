@@ -10,12 +10,12 @@ const Home: React.FC = () => {
 
   return (
     <div className="container">
-      <h1>CADASTRAR PERGUNTAS</h1>
-      <p>
-        <strong>Link para criar as questões: </strong>
+      <h1 >CADASTRAR PERGUNTAS</h1>
+      <p className="destaque">
+        <strong>Link para criar as questões: 
         <a href="https://forms.gle/ta1CK3atE5DwRxC56" target="_blank" rel="noopener noreferrer">
           https://forms.gle/ta1CK3atE5DwRxC56
-        </a>
+        </a></strong>
       </p>
 
       <p>Aqui você cadastra novas perguntas ao banco de questões;</p>

@@ -2,7 +2,7 @@
 import { generateSlug } from "@/utils/slug";
 import Link from "next/link";
 import React from "react";
-
+import { VscBook, VscArrowRight } from "react-icons/vsc";
 interface Questao {
   disciplina: string;
   link: string;
@@ -21,9 +21,9 @@ const Dimensao: React.FC<DimensaoProps> = ({ titulo, questoes }) => {
       <table>
         <thead>
           <tr>
-            <th>Dito que cai na prova?</th>
+            <th>Matéria de prova?</th>
             <th>Disciplina</th>
-            <th>Link para as questões cadastradas</th>
+            <th>Lista de questões</th>
           </tr>
         </thead>
         <tbody>
@@ -33,13 +33,20 @@ const Dimensao: React.FC<DimensaoProps> = ({ titulo, questoes }) => {
                 {questao.caiNaProva==="SIM" && questao.caiNaProva}
                 {questao.caiNaProva==="SIM" && 
                 <Link href={`/disciplinas/${generateSlug(questao.disciplina)}`}>
-                  : (RESUMO)
+                   < VscArrowRight/>
+                   Resumo
+                   <VscBook />
+
                 </Link>}
               </td>
               <td>
                 {questao.disciplina}
               </td>
-              <td><a href={questao.link} target="_blank" rel="noopener noreferrer">{questao.link}</a></td>
+              <td>
+                {questao.caiNaProva==="SIM" && 
+                <a href={questao.link} target="_blank" rel="noopener noreferrer">{questao.link}</a>
+                }
+              </td>
             </tr>
           ))}
         </tbody>

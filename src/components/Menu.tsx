@@ -29,11 +29,17 @@ const Menu: React.FC = () => {
               Início
             </Link>
           </li>
-          <li className="nav-item">
-            <Link href="/simulado" className="nav-link" onClick={closeMenu}>
-              Simulado
-            </Link>
+           
+          <li className="dropdown">
+            <a className="nav-link" href="#" onClick={closeMenu}>Simulado</a>  
+            <div className="dropdown-menu">
+              <Link href="/simulado" className="nav-link" onClick={closeMenu}>
+                Simulado
+              </Link>
+              <a className="nav-link" href="https://forms.gle/ta1CK3atE5DwRxC56" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Cadastrar Questões</a>
+            </div>
           </li>
+
           <li className="nav-item">
             <Link href="/disciplinas" className="nav-link" onClick={closeMenu}>
               Disciplinas
@@ -57,7 +63,7 @@ const Menu: React.FC = () => {
           </li>
 
           <li className="nav-item">
-          <a href="https://www.instagram.com/aprovadosrfb2023/" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>@Comissao</a>
+          <a className="nav-link" href="https://www.instagram.com/aprovadosrfb2023/" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>@Comissao</a>
           </li>
         </ul>
       </div>
