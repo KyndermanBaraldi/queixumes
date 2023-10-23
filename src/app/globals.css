@@ -34,18 +34,25 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 34px;
+  padding: 1.5rem 6rem;
 }
 
 .logo {
   font-size: 2rem;
   font-weight: bold;
-}
-
-.nav-menu {
   display: flex;
   align-items: center;
-  gap: 60px;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list ul {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
 }
 
 .nav-link {
@@ -54,6 +61,10 @@ a {
 
 .nav-link:hover {
   color: #0088d2;
+}
+
+.mobile-menu {
+  display: none;
 }
 
 .dropdown-menu {
@@ -135,6 +146,53 @@ a {
 
 .quiz-footer p {
   font-weight: bold;
+}
+
+@media screen and (max-width: 1200px) {
+  .app-navbar {
+    padding: 1.5rem 30px;
+  }
+
+  .mobile-menu {
+    display: block;
+    z-index: 999;
+  }
+
+  .mobile-menu-icon {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .nav-list {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: block;
+    background-color: #020617;
+    padding: 90px 30px;
+    height: 100%;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .nav-list ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    display: block;
+    box-shadow: none;
+  }
+
+  .quiz-app {
+    width: 100vw;
+  }
 }
 
 .options {
@@ -307,4 +365,27 @@ th {
   display: flex;
   justify-content: space-between;
   padding: 2rem 2rem;
+}
+
+.filtro-simulado {
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtro-simulado li {
+  padding: 1rem;
+}
+
+.filtro-simulado button {
+  background-color: #00f5f5;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 1rem;
+  font-size: 1.2rem;
 }
