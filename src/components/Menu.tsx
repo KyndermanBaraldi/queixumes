@@ -2,10 +2,11 @@
 import Link from "next/link";
 import { useState } from "react";
 import { VscMenu, VscChromeClose } from "react-icons/vsc";
+import { AiFillYoutube, AiFillInstagram } from "react-icons/ai";
 
 const Menu: React.FC = () => {
 
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -57,13 +58,17 @@ const Menu: React.FC = () => {
             <a className="nav-link" href="#" onClick={closeMenu}>Lotações</a>  
             <div className="dropdown-menu">
               <a className="nav-link" href="https://docs.google.com/spreadsheets/d/1qqXL5GZ3BpJpmXLFURQuJghCzqnmlaKQ26oeTul-ztY/edit?usp=sharing" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Simulação de lotação</a>
-              <a className="nav-link" href="https://docs.google.com/spreadsheets/d/1cukFEe__xKsY0tvxFLEkyLAaGVNUsi33G6PZl0y8LDU/edit#gid=0" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Resultado Remoção</a>
-              <a className="nav-link" href="https://lookerstudio.google.com/reporting/0414d52a-d654-4339-ac7d-ac832b9021a1/page/vtEfD" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Mapa das vagas</a>
+              <a className="nav-link" href="https://docs.google.com/spreadsheets/d/1ka2zW7GBBBnyCyNsMVzulnJ6_DiNrp4Lr6R9HY9GLLw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Unidades Receita Federal</a>
+              <a className="nav-link" href="https://lookerstudio.google.com/reporting/f93a1998-3f83-4160-8f09-b84332691bcf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Mapa das vagas</a>
             </div>
           </li>
 
-          <li className="nav-item">
-          <a className="nav-link" href="https://www.instagram.com/aprovadosrfb2023/" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>@Comissao</a>
+          <li className="dropdown">
+            <a className="nav-link" href="#" onClick={closeMenu}>Comissão</a>  
+            <div className="dropdown-menu">
+              <a className="nav-link" href="https://www.instagram.com/aprovadosrfb2023/" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>@Insta <AiFillInstagram/> </a>
+              <a className="nav-link" href="https://www.youtube.com/@AprovadosRFB2023" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>YouTube <AiFillYoutube /></a>
+            </div>          
           </li>
         </ul>
       </div>
