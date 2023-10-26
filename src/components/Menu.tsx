@@ -1,8 +1,11 @@
 'use client'
 import Link from "next/link";
+import { generateSlug } from "@/utils/slug";
 import { useState } from "react";
 import { VscMenu, VscChromeClose } from "react-icons/vsc";
 import { AiFillYoutube, AiFillInstagram } from "react-icons/ai";
+import { dimensaoHumana, dimensaoInstitucional, dimensaoTecnica } from "@/data/disciplinas";
+
 
 const Menu: React.FC = () => {
 
@@ -15,6 +18,10 @@ const Menu: React.FC = () => {
   const closeMenu = () => {
     setMenuOpen(true);
   };
+
+  const disciplinas = dimensaoHumana
+    .concat(dimensaoInstitucional, dimensaoTecnica)
+    .filter((disciplina)=>disciplina.caiNaProva.toLocaleLowerCase()==='sim')
 
   return (
     <nav className="app-navbar">
@@ -32,20 +39,37 @@ const Menu: React.FC = () => {
           </li>
            
           <li className="dropdown">
-            <a className="nav-link" href="#" onClick={closeMenu}>Simulado</a>  
+            <a className="nav-link" href="#" onClick={closeMenu}>Questões</a>  
             <div className="dropdown-menu">
               <Link href="/simulado" className="nav-link" onClick={closeMenu}>
                 Simulado
               </Link>
-              <a className="nav-link" href="https://forms.gle/ta1CK3atE5DwRxC56" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Cadastrar Questões</a>
+
+              {disciplinas.map((disciplina, index)=> (
+                <a key={index} className="nav-link" href={disciplina.link} target="_blank" rel="noopener noreferrer">{disciplina.disciplina}</a>
+              ))}
+
+              <a className="nav-link" href="https://forms.gle/ta1CK3atE5DwRxC56" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Cadastrar</a>
+            </div>
+          </li>
+          
+          <li className="dropdown">
+            <a className="nav-link" href="#" onClick={closeMenu}>Disciplinas</a>  
+            <div className="dropdown-menu">
+              <Link href="/disciplinas" className="nav-link" onClick={closeMenu}>
+                Conteúdo programático
+              </Link>
+
+              {disciplinas.map((disciplina, index)=> (
+                <Link key={index} className="nav-link" href={`/disciplinas/${generateSlug(disciplina.disciplina)}`}>
+                  {disciplina.disciplina}
+                </Link>
+              ))}
+
+<a className="nav-link" href="https://drive.google.com/drive/folders/1rdGIeC_vMc3u5OGWWEsR8tP49O9KAXWG?usp=sharing" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Materiais</a>
             </div>
           </li>
 
-          <li className="nav-item">
-            <Link href="/disciplinas" className="nav-link" onClick={closeMenu}>
-              Disciplinas
-            </Link>
-          </li>
           <li className="dropdown">
             <a className="nav-link" href="#" onClick={closeMenu}>Power BI</a>  
             <div className="dropdown-menu">
@@ -57,9 +81,9 @@ const Menu: React.FC = () => {
           <li className="dropdown">
             <a className="nav-link" href="#" onClick={closeMenu}>Lotações</a>  
             <div className="dropdown-menu">
-              <a className="nav-link" href="https://docs.google.com/spreadsheets/d/1qqXL5GZ3BpJpmXLFURQuJghCzqnmlaKQ26oeTul-ztY/edit?usp=sharing" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Simulação de lotação</a>
-              <a className="nav-link" href="https://docs.google.com/spreadsheets/d/1ka2zW7GBBBnyCyNsMVzulnJ6_DiNrp4Lr6R9HY9GLLw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Unidades Receita Federal</a>
-              <a className="nav-link" href="https://lookerstudio.google.com/reporting/f93a1998-3f83-4160-8f09-b84332691bcf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Mapa das vagas</a>
+              <a className="nav-link" href="https://docs.google.com/spreadsheets/d/1qqXL5GZ3BpJpmXLFURQuJghCzqnmlaKQ26oeTul-ztY/edit?usp=sharing" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Simulação</a>
+              <a className="nav-link" href="https://docs.google.com/spreadsheets/d/1ka2zW7GBBBnyCyNsMVzulnJ6_DiNrp4Lr6R9HY9GLLw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Unidades RFB</a>
+              <a className="nav-link" href="https://lookerstudio.google.com/reporting/f93a1998-3f83-4160-8f09-b84332691bcf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Mapa</a>
             </div>
           </li>
 
