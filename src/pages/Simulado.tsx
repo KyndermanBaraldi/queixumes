@@ -8,6 +8,8 @@ interface Question {
   resolution: string;
   author: string;
   course: string;
+  selected: number; // Índice da opção selecionada (-1 para nenhum botão selecionado inicialmente)
+  finished: boolean;
 }
 
 interface SimuladoProps {
@@ -16,9 +18,8 @@ interface SimuladoProps {
 
 const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
-  const [finished, setFinished] = useState<boolean>(false);
+  const finished = questions.every(question => question.finished);
   const [score, setScore] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -26,16 +27,21 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const parsedQuery = queryString ? queryString : ""; // Usa a query string recebida por props ou uma string vazia se não fornecida
-        const api_url = `${process.env.NEXT_PUBLIC_API_URL}?${parsedQuery}`; // Adiciona a query string à URL da API
+        const parsedQuery = queryString ? queryString : "";
+        const api_url = `${process.env.NEXT_PUBLIC_API_URL}?${parsedQuery}`;
         const response = await fetch(api_url);
-        
+  
         if (response.ok) {
           const data = await response.json();
           console.log(data);
-          
-          setQuestions(data.res);
-          setSelectedOptions(new Array(data.length).fill(-1));
+  
+          const questionsWithSelectionAndFinished = data.res.map((question: Question) => ({
+            ...question,
+            selected: -1, // Inicialmente nenhum botão selecionado (-1 representa nenhum botão selecionado)
+            finished: false, // Inicialmente nenhum questionário está finalizado
+          }));
+  
+          setQuestions(questionsWithSelectionAndFinished);
         } else {
           throw new Error("Erro ao buscar dados da API");
         }
@@ -45,27 +51,37 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
         setLoading(false);
       }
     };
-
+  
     fetchQuestions();
   }, [queryString]);
 
+  const setFinished = () => {
+    const updatedQuestions = questions.map(question => ({ ...question, finished: true }));
+    setQuestions(updatedQuestions);
+  };
+  
+
   const handleOptionClick = (optionIndex: number) => {
     if (!finished) {
-      const newSelectedOptions: number[] = [...selectedOptions];
-      newSelectedOptions[currentQuestion] = optionIndex;
-      setSelectedOptions(newSelectedOptions);
+      const updatedQuestions = [...questions]; // Crie uma cópia do array questions
+      updatedQuestions[currentQuestion] = {
+        ...updatedQuestions[currentQuestion],
+        selected: optionIndex, // Atualize a propriedade selected da pergunta atual
+      };
+      setQuestions(updatedQuestions); // Atualize o estado com as perguntas atualizadas
     }
   };
 
   const handleFinishQuiz = () => {
     let calculatedScore: number = 0;
-    questions.forEach((question, index) => {
-      if (question.answer === question.options[selectedOptions[index]]) {
+    questions.forEach(question => {
+      const isCorrect = question.answer === question.options[question.selected];
+      if (isCorrect) {
         calculatedScore++;
       }
     });
     setScore(calculatedScore);
-    setFinished(true);
+    setFinished();
   };
 
   const handleNextQuestion = () => {
@@ -79,6 +95,23 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
       setCurrentQuestion(currentQuestion - 1);
     }
   };
+
+  const handleResponderQuestion = () => {
+    
+    const updatedQuestions = [...questions]; // Crie uma cópia do array questions
+    updatedQuestions[currentQuestion] = {
+      ...updatedQuestions[currentQuestion],
+      finished: true, // Atualize a propriedade selected da pergunta atual
+    };
+
+    setQuestions(updatedQuestions); // Atualize o estado com as perguntas atualizadas
+    
+    const finished = updatedQuestions.every(question => question.finished);
+    if (finished) {
+      handleFinishQuiz();
+      
+    }
+  }
 
   // const handleRestartQuiz = () => {
   //   setCurrentQuestion(0);
@@ -108,11 +141,11 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
               key={index}
               onClick={() => handleOptionClick(index)}
               className={`
-                ${!finished && selectedOptions[currentQuestion] === index ? "selected-answer" : ""}
-                ${finished && selectedOptions[currentQuestion] === index && questions[currentQuestion].answer != option ? "wrong-answer" : ""}
-                ${finished && questions[currentQuestion].answer === option ? "correct-answer" : ""}
+                ${!questions[currentQuestion].finished && questions[currentQuestion].selected === index ? "selected-answer" : ""}
+                ${questions[currentQuestion].finished && questions[currentQuestion].selected === index && questions[currentQuestion].answer !== questions[currentQuestion].options[index] ? "wrong-answer" : ""}
+                ${questions[currentQuestion].finished && questions[currentQuestion].answer === questions[currentQuestion].options[index] ? "correct-answer" : ""}
               `}
-              disabled={finished}
+              disabled={questions[currentQuestion].finished}
             >
               {option}
             </button>
@@ -123,7 +156,7 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
         <p>Disciplina: {questions[currentQuestion].course}</p>
         <p>Autor: Auditor(a) Fiscal {questions[currentQuestion].author}</p>
 
-        {finished && (
+        {questions[currentQuestion].finished && (
           <div>
             <p>Explicação</p>
             <p>{questions[currentQuestion].resolution}</p>
@@ -138,6 +171,11 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
           {currentQuestion > 0 && (
             <button className="nav-button" onClick={handlePreviousQuestion}>
               Voltar
+            </button>
+          )}
+          {!questions[currentQuestion].finished && (
+            <button className="nav-button" onClick={handleResponderQuestion}>
+              Responder
             </button>
           )}
           {currentQuestion < questions.length - 1 && (

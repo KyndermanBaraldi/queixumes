@@ -72,6 +72,7 @@ a {
   box-shadow: 0 0 2px white;
   border-radius: 3px;
   display: none;
+  background-color: #020617;
 }
 
 .dropdown-menu a {
@@ -188,6 +189,7 @@ a {
     position: static;
     display: block;
     box-shadow: none;
+    background-color: #020617;
   }
 
   .quiz-app {

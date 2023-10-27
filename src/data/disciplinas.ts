@@ -24,7 +24,7 @@ const dimensaoHumana = [
   const dimensaoTecnica = [
     { disciplina: "Tributação e Contencioso", link: "https://forms.gle/UqXL1u9weLEypYDV8", caiNaProva: "SIM" },
     { disciplina: "Gestão do Crédito Tributário", link: "https://forms.gle/ahjRque2xxKRG2p57", caiNaProva: "SIM" },
-    { disciplina: "Administração Aduaneira e Modelo de Controle - MCA", link: "https://forms.gle/Q8TKrqBG8RQfX3nC6", caiNaProva: "" },
+    { disciplina: "Administração Aduaneira e Modelo de Controle - MCA", link: "https://forms.gle/Q8TKrqBG8RQfX3nC6", caiNaProva: "SIM" },
     { disciplina: "Conformidade Tributária", link: "https://forms.gle/jSCKoPjKX5wEe96f9", caiNaProva: "" },
     { disciplina: "Controle de Carga, Fluxo de Informações e Gestão Coordenada de Fronteiras - CCA", link: "https://forms.gle/ibRGAMsHszzf9ejT7", caiNaProva: "" },
     { disciplina: "Despacho Aduaneiro Operacional - DDA", link: "https://forms.gle/cuhUMwKrc3WfZwMk7", caiNaProva: "" },
@@ -34,7 +34,7 @@ const dimensaoHumana = [
     { disciplina: "Macroprocessos da Fiscalização", link: "https://forms.gle/H1Sx9WCWpWWwMMrW8", caiNaProva: "" },
     { disciplina: "Operador Econômico Autorizado - OEA", link: "https://forms.gle/WLibC6bKYc51nEZJA", caiNaProva: "" },
     { disciplina: "Processos Aduaneiros Diferenciados - DIF", link: "https://forms.gle/ZELfNQYM9RyQuaXJA", caiNaProva: "" },
-    { disciplina: "Regras e Fundamentos do Comércio Internacional - RCI*", link: "https://forms.gle/1kLEEESSwJeqt4ka7", caiNaProva: "" },
+    { disciplina: "Regras e Fundamentos do Comércio Internacional - RCI*", link: "https://forms.gle/1kLEEESSwJeqt4ka7", caiNaProva: "NÃO" },
     { disciplina: "Sigilo Fiscal", link: "https://forms.gle/oS55Pic11twotxmb7", caiNaProva: "" },
     { disciplina: "Sistema Público de Escriturações Digitais (SPED)", link: "https://forms.gle/gNVdPwueLVFTQwER9", caiNaProva: "" },
     { disciplina: "Tecnologia da Informação e Fluência em Dados I", link: "https://forms.gle/7jUtWLC7hxZXWBH9A", caiNaProva: "" },
