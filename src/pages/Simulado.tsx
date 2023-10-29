@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from "react";
+import {RiScissorsCutFill} from "react-icons/ri"
 
 interface Question {
   question: string;
@@ -10,6 +11,12 @@ interface Question {
   course: string;
   selected: number; // Índice da opção selecionada (-1 para nenhum botão selecionado inicialmente)
   finished: boolean;
+  isnt: Set<number>;
+}
+
+interface DisciplinaResult {
+  acertos: number;
+  erros: number;
 }
 
 interface SimuladoProps {
@@ -18,6 +25,7 @@ interface SimuladoProps {
 
 const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [disciplinaResultados, setDisciplinaResultados] = useState<{ [key: string]: DisciplinaResult }>({});
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const finished = questions.every(question => question.finished);
   const [score, setScore] = useState<number>(0);
@@ -33,12 +41,13 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
   
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
+          // console.log(data);
   
           const questionsWithSelectionAndFinished = data.res.map((question: Question) => ({
             ...question,
             selected: -1, // Inicialmente nenhum botão selecionado (-1 representa nenhum botão selecionado)
             finished: false, // Inicialmente nenhum questionário está finalizado
+            isnt: new Set<number>()
           }));
   
           setQuestions(questionsWithSelectionAndFinished);
@@ -56,8 +65,36 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
   }, [queryString]);
 
   const setFinished = () => {
+    
     const updatedQuestions = questions.map(question => ({ ...question, finished: true }));
+    const resultadosPorDisciplina: { [key: string]: DisciplinaResult } = {};
+    let calculatedScore: number = 0;
+
+    updatedQuestions.forEach((question: Question) => {
+      if (question.finished) {
+        const disciplina = question.course;
+        const isCorreta = question.answer === question.options[question.selected];
+
+        if (!resultadosPorDisciplina[disciplina]) {
+          resultadosPorDisciplina[disciplina] = {
+            acertos: 0,
+            erros: 0,
+          };
+        }
+
+        if (isCorreta) {
+          calculatedScore++;
+          resultadosPorDisciplina[disciplina].acertos++;
+        } else {
+          resultadosPorDisciplina[disciplina].erros++;
+        }
+      }
+    });
+
+    setDisciplinaResultados(resultadosPorDisciplina);
+    setScore(calculatedScore);
     setQuestions(updatedQuestions);
+
   };
   
 
@@ -73,14 +110,6 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
   };
 
   const handleFinishQuiz = () => {
-    let calculatedScore: number = 0;
-    questions.forEach(question => {
-      const isCorrect = question.answer === question.options[question.selected];
-      if (isCorrect) {
-        calculatedScore++;
-      }
-    });
-    setScore(calculatedScore);
     setFinished();
   };
 
@@ -95,6 +124,21 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
       setCurrentQuestion(currentQuestion - 1);
     }
   };
+
+  const handleScissor = (optionIndex: number) => {
+
+    if (!questions[currentQuestion].finished) {
+      const updatedQuestions = [...questions];
+
+      if (updatedQuestions[currentQuestion].isnt.has(optionIndex)) {
+        updatedQuestions[currentQuestion].isnt.delete(optionIndex)
+      } else {
+        updatedQuestions[currentQuestion].isnt.add(optionIndex)
+      }
+      setQuestions(updatedQuestions); // Atualize o estado com as perguntas atualizadas
+    }
+  }
+
 
   const handleResponderQuestion = () => {
     
@@ -137,18 +181,22 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
         <pre className="caput">{`${currentQuestion + 1} - ${questions[currentQuestion].question}`}</pre>
         <div className="options">
           {questions[currentQuestion].options.map((option, index) => (
-            <button
-              key={index}
-              onClick={() => handleOptionClick(index)}
-              className={`
-                ${!questions[currentQuestion].finished && questions[currentQuestion].selected === index ? "selected-answer" : ""}
-                ${questions[currentQuestion].finished && questions[currentQuestion].selected === index && questions[currentQuestion].answer !== questions[currentQuestion].options[index] ? "wrong-answer" : ""}
-                ${questions[currentQuestion].finished && questions[currentQuestion].answer === questions[currentQuestion].options[index] ? "correct-answer" : ""}
-              `}
-              disabled={questions[currentQuestion].finished}
-            >
-              {option}
-            </button>
+            <div className="option" key={index}>
+              < RiScissorsCutFill onClick={() => handleScissor(index)}/>
+              <button
+                
+                onClick={() => handleOptionClick(index)}
+                className={`
+                  ${!questions[currentQuestion].finished && questions[currentQuestion].selected === index ? "selected-answer" : ""}
+                  ${questions[currentQuestion].finished && questions[currentQuestion].selected === index && questions[currentQuestion].answer !== questions[currentQuestion].options[index] ? "wrong-answer" : ""}
+                  ${questions[currentQuestion].finished && questions[currentQuestion].answer === questions[currentQuestion].options[index] ? "correct-answer" : ""}
+                  ${(questions[currentQuestion].isnt.has(index)) ? "texto-tachado" : ""}
+                `}
+                disabled={questions[currentQuestion].finished }
+              >
+                {option}
+              </button>
+            </div>
           ))}
           
         </div>
@@ -192,10 +240,23 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
 
         {finished && (
           <div>
-            <p>Quiz concluído! Sua pontuação: {score}</p>
-            {/* <button className="nav-button" onClick={handleRestartQuiz}>
-              Reiniciar
-            </button> */}
+            <h2>Simulado concluído! Sua pontuação: {score}</h2>
+            <ul>
+            {
+            
+              Object.keys(disciplinaResultados).map((disciplina) =>
+                (
+                  <li key={disciplina}>
+                    <p>{`${disciplina}: ${disciplinaResultados[disciplina].acertos} acertos, ${disciplinaResultados[disciplina].erros} erros`}</p>
+                  </li> 
+                )
+              )
+            
+            
+            }
+            </ul>
+            
+            
             
           </div>
         )}
