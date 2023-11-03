@@ -26,6 +26,10 @@ const Page: React.FC = () => {
         <tbody>
           <tr>
             <td>03/11/2023</td>
+            <td><a href="https://forms.gle/18zowdsP2UAZSGqE8" target="_blank" rel="noopener noreferrer">Link para enviar respostas</a></td>
+          </tr>
+          <tr>
+            <td>03/11/2023</td>
             <td><a href="https://drive.google.com/file/d/1GjN5VJBLSxzkkNr5-11soPJio4m3IaBp/view?usp=sharing" target="_blank" rel="noopener noreferrer">Comunicado alteração de gabarito</a></td>
           </tr>
           <tr>
