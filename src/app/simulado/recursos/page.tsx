@@ -17,6 +17,7 @@ const Page: React.FC = () => {
       <br />
       <br />
       <p>Preencha um formulário e registre com o Milton.</p>
+      <p>O Recurso será analisado em momento oportuno.</p>
       <br />
 
       <Image
@@ -28,7 +29,7 @@ const Page: React.FC = () => {
     
     <br />
     <br />
-    <Link href="/simulado/pdf">Voltar</Link>
+    <Link href="/simulado/pdf">Salvar</Link>
 
     </div>
   );

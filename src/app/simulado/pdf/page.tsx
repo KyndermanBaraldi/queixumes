@@ -44,7 +44,7 @@ const Page: React.FC = () => {
 
       </table>
       <br />
-      <p>O simulado foi desenvolvido por alunos do curso de formação de forma colaborativa.</p>
+      <p>O simulado foi desenvolvido por alunos do curso de formação (Verdadeiros aprovados) de forma colaborativa.</p>
       
 
     </div>
