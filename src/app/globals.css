@@ -73,6 +73,8 @@ a {
   border-radius: 3px;
   display: none;
   background-color: #020617;
+  max-width: 450px;
+  padding: 10px 5px;
 }
 
 .dropdown-menu a {

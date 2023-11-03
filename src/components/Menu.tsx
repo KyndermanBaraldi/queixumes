@@ -42,12 +42,20 @@ const Menu: React.FC = () => {
             <a className="nav-link" href="#" onClick={closeMenu}>Questões</a>  
             <div className="dropdown-menu">
               <Link href="/simulado" className="nav-link" onClick={closeMenu}>
-                Simulado
+                Simulado Digital
               </Link>
+
+              <Link href="/simulado/pdf" className="nav-link" onClick={closeMenu}>
+                Simulado Oficial
+              </Link>
+
+              <hr style={{ width: "98%", margin: "10px auto"}} />
 
               {disciplinas.map((disciplina, index)=> (
                 <a key={index} className="nav-link" href={disciplina.link} target="_blank" rel="noopener noreferrer">{disciplina.disciplina}</a>
               ))}
+
+              <hr style={{ width: "98%", margin: "10px auto" }} />
 
               <a className="nav-link" href="https://forms.gle/ta1CK3atE5DwRxC56" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Cadastrar</a>
             </div>
