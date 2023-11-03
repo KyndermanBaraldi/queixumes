@@ -1,5 +1,7 @@
 'use client'
 
+import Link from "next/link";
+
 
 
 
@@ -27,6 +29,10 @@ const Page: React.FC = () => {
             <td><a href="https://drive.google.com/file/d/1GjN5VJBLSxzkkNr5-11soPJio4m3IaBp/view?usp=sharing" target="_blank" rel="noopener noreferrer">Comunicado alteração de gabarito</a></td>
           </tr>
           <tr>
+            <td>03/11/2023</td>
+            <td><Link href="/simulado/recursos">Interposição de recurso contra o gabarito</Link></td>
+          </tr>
+          <tr>
             <td>02/11/2023</td>
             <td><a href="https://drive.google.com/file/d/1D___JOFqPNwNPgg8w-gWEjxpnWL-oNxh/view?usp=sharing" target="_blank" rel="noopener noreferrer">Gabarito Preliminar Simulado Curso de Formação Auditor Fiscal</a></td>
           </tr>
@@ -38,7 +44,7 @@ const Page: React.FC = () => {
 
       </table>
       <br />
-      <p>O simulado foi desenvolvido por alubnos do curso de formação de forma colaborativa.</p>
+      <p>O simulado foi desenvolvido por alunos do curso de formação de forma colaborativa.</p>
       
 
     </div>

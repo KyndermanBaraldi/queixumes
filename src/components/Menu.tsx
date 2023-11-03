@@ -46,7 +46,7 @@ const Menu: React.FC = () => {
               </Link>
 
               <Link href="/simulado/pdf" className="nav-link" onClick={closeMenu}>
-                Simulado Oficial
+                Página do Simulado
               </Link>
 
               <hr style={{ width: "98%", margin: "10px auto"}} />
