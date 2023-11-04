@@ -26,6 +26,11 @@ const Page: React.FC = () => {
         <tbody>
           <tr>
             <td>03/11/2023</td>
+            <td><Link href="/simulado/ranking">Ranking</Link></td>
+          </tr>
+          
+          <tr>
+            <td>03/11/2023</td>
             <td><a href="https://forms.gle/18zowdsP2UAZSGqE8" target="_blank" rel="noopener noreferrer">Link para enviar respostas</a></td>
           </tr>
           <tr>
