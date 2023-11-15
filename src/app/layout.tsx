@@ -15,6 +15,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  return (
+    <html lang="pt-br">
+      <body className={inter.className}>
+        <header>
+          
+        </header>
+        <main>
+          <h1>
+            Desculpe o Transtorno, estamos em manutenção.
+          </h1>
+        </main>
+        <footer className="app-footer">
+          <p>&copy; 2023 <strong>Queixumes</strong>. Todos os direitos reservados.</p>
+          <p>Desenvolvido por <a href="https://github.com/KyndermanBaraldi" target="_blank" rel="noopener noreferrer">Kynderman Baraldi</a></p>
+        </footer> 
+      </body>
+    </html>
+  )
+
   return (
     <html lang="pt-br">
       <body className={inter.className}>
