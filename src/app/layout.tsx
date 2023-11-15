@@ -24,7 +24,7 @@ export default function RootLayout({
         </header>
         <main>
           <h1>
-            Desculpe o Transtorno, estamos em manutenção.
+            Desculpe a manutenção, estamos em transtorno.
           </h1>
         </main>
         <footer className="app-footer">
