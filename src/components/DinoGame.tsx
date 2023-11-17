@@ -1,6 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const DinoGame: React.FC = () => {
+
+  const obstaclesArray: string[] = [
+    'queixumes',
+    'acp',
+    'discursiva',
+    'fgv',
+    'perícia',
+    'faixista',
+    'reprovação',
+    'suspensão'
+  ];
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dino = useRef<{ x: number; y: number; velocity: number; jumping: boolean }>({
     x: 50,
@@ -57,7 +69,7 @@ const DinoGame: React.FC = () => {
       if (obstacle.current.x + context!.measureText(obstacle.current.text).width < 0) {
         obstacle.current.x = canvas!.width;
         score += 1;
-        // obstacle.current.text = 'queixumes: ' + score.toString();
+        obstacle.current.text = obstaclesArray[Math.floor(Math.random() * obstaclesArray.length)];;
       }
 
       // Verifique se houve uma colisão
