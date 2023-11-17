@@ -202,7 +202,7 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
         </div>
         
         <p>Disciplina: {questions[currentQuestion].course}</p>
-        <p>Autor: Auditor(a) Fiscal {questions[currentQuestion].author}</p>
+        <p>Autor: {questions[currentQuestion].author}</p>
 
         {questions[currentQuestion].finished && (
           <div>

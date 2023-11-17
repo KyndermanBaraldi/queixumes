@@ -103,7 +103,7 @@ const DinoGame: React.FC = () => {
           context.textBaseline = 'middle';
           context.fillText('Parabéns, Auditor!', canvas!.width/2, canvas!.height/2 - 20);
           // context.font = '12px Arial';
-          context.fillText('Trintou', canvas!.width/2, canvas!.height/2 + 20);
+          context.fillText('Trintou!!! :)', canvas!.width/2, canvas!.height/2 + 20);
         }
         setTimeout(() => {
           window.location.reload(); // Reinicia o jogo ao detectar uma colisão
@@ -131,7 +131,7 @@ const DinoGame: React.FC = () => {
         // Desenhe o obstáculo (pontuação)
         context?.fillText(obstacle.current.text, obstacle.current.x, obstacle.current.y);
 
-        context?.fillText(score.toString(), canvas!.width - 20, 30);
+        context?.fillText(score.toString(), canvas!.width - 30, 30);
 
       // Chame a função de atualização e desenho em cada quadro
       
