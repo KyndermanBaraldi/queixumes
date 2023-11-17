@@ -49,11 +49,11 @@ const Menu: React.FC = () => {
                 Página do Simulado
               </Link>
 
-              <hr style={{ width: "98%", margin: "10px auto"}} />
+              {/* <hr style={{ width: "98%", margin: "10px auto"}} />
 
               {disciplinas.map((disciplina, index)=> (
                 <a key={index} className="nav-link" href={disciplina.link} target="_blank" rel="noopener noreferrer">{disciplina.disciplina}</a>
-              ))}
+              ))} */}
 
               <hr style={{ width: "98%", margin: "10px auto" }} />
 
@@ -61,7 +61,7 @@ const Menu: React.FC = () => {
             </div>
           </li>
           
-          <li className="dropdown">
+          {/* <li className="dropdown">
             <a className="nav-link" href="#" onClick={closeMenu}>Disciplinas</a>  
             <div className="dropdown-menu">
               <Link href="/disciplinas" className="nav-link" onClick={closeMenu}>
@@ -76,7 +76,7 @@ const Menu: React.FC = () => {
 
 <a className="nav-link" href="https://drive.google.com/drive/folders/1rdGIeC_vMc3u5OGWWEsR8tP49O9KAXWG?usp=sharing" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Materiais</a>
             </div>
-          </li>
+          </li> */}
 
           <li className="dropdown">
             <a className="nav-link" href="#" onClick={closeMenu}>Power BI</a>  
