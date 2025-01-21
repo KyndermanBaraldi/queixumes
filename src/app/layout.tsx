@@ -29,7 +29,6 @@ export default function RootLayout({
   //       </main>
   //       <footer className="app-footer">
   //         <p>&copy; 2023 <strong>Queixumes</strong>. Todos os direitos reservados.</p>
-  //         <p>Desenvolvido por <a href="https://github.com/KyndermanBaraldi" target="_blank" rel="noopener noreferrer">Kynderman Baraldi</a></p>
   //       </footer> 
   //     </body>
   //   </html>
@@ -46,7 +45,6 @@ export default function RootLayout({
         </main>
         <footer className="app-footer">
           <p>&copy; 2023 <strong>Queixumes</strong>. Todos os direitos reservados.</p>
-          <p>Desenvolvido por <a href="https://github.com/KyndermanBaraldi" target="_blank" rel="noopener noreferrer">Kynderman Baraldi</a></p>
         </footer>        
       </body>
     </html>
