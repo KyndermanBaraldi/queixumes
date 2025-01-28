@@ -9,7 +9,7 @@ interface Question {
   resolution: string;
   author: string;
   course: string;
-  selected: number; // Índice da opção selecionada (-1 para nenhum botão selecionado inicialmente)
+  selected: number;
   finished: boolean;
   isnt: Set<number>;
 }
@@ -20,7 +20,7 @@ interface DisciplinaResult {
 }
 
 interface SimuladoProps {
-  queryString: string; // Adiciona a propriedade para receber a query string
+  queryString: string;
 }
 
 const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
@@ -41,12 +41,11 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
   
         if (response.ok) {
           const data = await response.json();
-          // console.log(data);
   
           const questionsWithSelectionAndFinished = data.res.map((question: Question) => ({
             ...question,
-            selected: -1, // Inicialmente nenhum botão selecionado (-1 representa nenhum botão selecionado)
-            finished: false, // Inicialmente nenhum questionário está finalizado
+            selected: -1,
+            finished: false,
             isnt: new Set<number>()
           }));
   
@@ -100,12 +99,12 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
 
   const handleOptionClick = (optionIndex: number) => {
     if (!finished) {
-      const updatedQuestions = [...questions]; // Crie uma cópia do array questions
+      const updatedQuestions = [...questions];
       updatedQuestions[currentQuestion] = {
         ...updatedQuestions[currentQuestion],
-        selected: optionIndex, // Atualize a propriedade selected da pergunta atual
+        selected: optionIndex,
       };
-      setQuestions(updatedQuestions); // Atualize o estado com as perguntas atualizadas
+      setQuestions(updatedQuestions);
     }
   };
 
@@ -135,20 +134,20 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
       } else {
         updatedQuestions[currentQuestion].isnt.add(optionIndex)
       }
-      setQuestions(updatedQuestions); // Atualize o estado com as perguntas atualizadas
+      setQuestions(updatedQuestions);
     }
   }
 
 
   const handleResponderQuestion = () => {
     
-    const updatedQuestions = [...questions]; // Crie uma cópia do array questions
+    const updatedQuestions = [...questions];
     updatedQuestions[currentQuestion] = {
       ...updatedQuestions[currentQuestion],
-      finished: true, // Atualize a propriedade selected da pergunta atual
+      finished: true,
     };
 
-    setQuestions(updatedQuestions); // Atualize o estado com as perguntas atualizadas
+    setQuestions(updatedQuestions);
     
     const finished = updatedQuestions.every(question => question.finished);
     if (finished) {
@@ -156,13 +155,6 @@ const Simulado: React.FC<SimuladoProps> = ({ queryString }) => {
       
     }
   }
-
-  // const handleRestartQuiz = () => {
-  //   setCurrentQuestion(0);
-  //   setSelectedOptions(new Array(questions.length).fill(-1));
-  //   setFinished(false);
-  //   setScore(0);
-  // };
 
   if (loading) {
     return <div>Carregando...</div>;

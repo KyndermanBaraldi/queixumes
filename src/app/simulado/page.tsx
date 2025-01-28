@@ -19,17 +19,17 @@ const Page: React.FC = () => {
   const [queryString, setQueryString] = useState<string>('');
 
   useEffect(() => {
-    // Função assíncrona para buscar as matérias disponíveis da API
+  
     async function fetchMaterias() {
       try {
         const api_url = process.env.NEXT_PUBLIC_API_URL + "?route=cursos";
         const response = await fetch(api_url);
         const data = await response.json();
         setMaterias(data.res);
-        setLoading(false); // Marca o carregamento como completo após obter os dados
+        setLoading(false);
       } catch (error) {
         console.error('Erro ao buscar matérias:', error);
-        setLoading(false); // Marca o carregamento como completo em caso de erro
+        setLoading(false);
       }
     }
 
@@ -46,7 +46,7 @@ const Page: React.FC = () => {
   const handleEsconderMaterias = () => {
     setEsconderMaterias(true);
     const stringConcatenada = materias.map((materia) => `${generateSlug(materia.course)}=${materia.prova}`).join('&');
-    setQueryString(stringConcatenada); // Atualiza o estado com a string concatenada
+    setQueryString(stringConcatenada);
   };
 
   return (
@@ -74,7 +74,7 @@ const Page: React.FC = () => {
           <button onClick={handleEsconderMaterias}>Criar Simulado</button>
         </section>      
       )}
-      {!loading && esconderMaterias && <Simulado queryString={queryString} />} {/* Passa a queryString como propriedade para Simulado */}
+      {!loading && esconderMaterias && <Simulado queryString={queryString} />}
     </div>
   );
 };

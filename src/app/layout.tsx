@@ -16,24 +16,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  // return (
-  //   <html lang="pt-br">
-  //     <body className={inter.className}>
-  //       <header>
-          
-  //       </header>
-  //       <main>
-  //         <h1>
-  //           Desculpe a manutenção, estamos em transtorno.
-  //         </h1>
-  //       </main>
-  //       <footer className="app-footer">
-  //         <p>&copy; 2023 <strong>Queixumes</strong>. Todos os direitos reservados.</p>
-  //       </footer> 
-  //     </body>
-  //   </html>
-  // )
-
   return (
     <html lang="pt-br">
       <body className={inter.className}>
